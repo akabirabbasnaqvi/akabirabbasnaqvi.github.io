@@ -1,0 +1,25 @@
+# dependencies
+/node_modules
+/.pnpm-store
+/.pnp
+.pnp.*
+
+# local references, not portfolio source
+/Codex-Skills
+
+# Next.js
+/.next
+/out
+
+# testing
+/playwright-report
+/test-results
+/artifacts
+
+# environment
+.env*
+
+# OS / editors
+.DS_Store
+Thumbs.db
+*.tsbuildinfo
