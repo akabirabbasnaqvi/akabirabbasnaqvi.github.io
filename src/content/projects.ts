@@ -65,7 +65,7 @@ export const projects: Project[] = [
   },
   {
     id: "05",
-    title: "Aims Backoffice",
+    title: "RetailOps Reporting Suite",
     category: "Reporting desktop app",
     summary: "Turns raw POS exports into multi-sheet operational reports.",
     detail:

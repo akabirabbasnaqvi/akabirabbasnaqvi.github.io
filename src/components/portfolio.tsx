@@ -6,6 +6,7 @@ const githubProfile = "https://github.com/akabirabbasnaqvi";
 const linkedInProfile = "https://www.linkedin.com/in/akabir-abbas/";
 const fiverrProfile = "https://www.fiverr.com/users/akabir_abbas";
 const emailAddress = "abbasakabir@gmail.com";
+const whatsAppProfile = "https://wa.me/923033224737";
 
 const skillGroups = [
   { label: "Languages", skills: ["Python", "JavaScript", "TypeScript", "Java", "C/C++", "Kotlin", "SQL", "Dart"] },
@@ -77,9 +78,6 @@ function Hero() {
     <section className="hero" id="top">
       <div className="hero__copy">
         <div className="hero__identity">
-          {/* This stays a plain image so the static profile asset can be replaced directly. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img alt="Akabir Abbas" className="hero__profile" decoding="async" fetchPriority="high" height="112" src="./assets/profile.jpg" width="112" />
           <h1>
             <span className="hero__name">Akabir Abbas</span>
             <span aria-label="AI and Software Engineer" className="hero__role">
@@ -264,6 +262,10 @@ function Contact() {
         </a>
         <a className="contact-link" href={fiverrProfile} rel="noreferrer" target="_blank">
           <span>Hire me on Fiverr</span>
+          <ArrowUpRight className="contact-link__icon" />
+        </a>
+        <a className="contact-link" href={whatsAppProfile} rel="noreferrer" target="_blank">
+          <span>WhatsApp +92 303 3224737</span>
           <ArrowUpRight className="contact-link__icon" />
         </a>
         <a className="contact-link" href={`mailto:${emailAddress}`}>

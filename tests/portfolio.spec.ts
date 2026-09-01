@@ -9,10 +9,12 @@ test("portfolio has eleven implemented projects and complete profile actions", a
   await expect(page.getByText("Project Pilot AI")).toHaveCount(0);
   await expect(page.getByText("11 verified projects")).toBeVisible();
   await expect(page.getByText(/11 active projects/)).toBeVisible();
-  await expect(page.locator(".hero__profile")).toHaveAttribute("src", "./assets/profile.jpg");
+  await expect(page.getByRole("heading", { level: 3, name: "RetailOps Reporting Suite" })).toBeVisible();
+  await expect(page.locator(".hero__profile")).toHaveCount(0);
   await expect(page.getByRole("link", { name: /Download resume/ })).toHaveAttribute("href", "./assets/resume.pdf");
   await expect(page.getByRole("link", { name: "Connect on LinkedIn" })).toHaveAttribute("href", "https://www.linkedin.com/in/akabir-abbas/");
   await expect(page.getByRole("link", { name: "Hire me on Fiverr" })).toHaveAttribute("href", "https://www.fiverr.com/users/akabir_abbas");
+  await expect(page.getByRole("link", { name: "WhatsApp +92 303 3224737" })).toHaveAttribute("href", "https://wa.me/923033224737");
   await expect(page.getByRole("link", { name: "abbasakabir@gmail.com" })).toHaveAttribute("href", "mailto:abbasakabir@gmail.com");
 
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
@@ -72,7 +74,7 @@ test("has clear landmarks, responsive canvas behavior, and no runtime errors", a
   await expect(page.getByRole("main")).toBeVisible();
   await expect(page.getByRole("contentinfo")).toBeVisible();
   await expect(page.locator("canvas#hero-canvas")).toHaveCount(1);
-  await expect(page.locator("img.hero__profile")).toBeVisible();
+  await expect(page.locator("img.hero__profile")).toHaveCount(0);
   if (testInfo.project.name === "mobile") {
     await expect(page.locator(".neural-network-shell")).toBeHidden();
   } else {
