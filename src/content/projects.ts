@@ -144,18 +144,6 @@ export const projects: Project[] = [
     repository: "https://github.com/akabirabbasnaqvi/Smart-Task-Manager-App-Android-App",
     tone: "#49855e",
   },
-  {
-    id: "12",
-    title: "Project Pilot AI",
-    category: "Project concept",
-    summary: "An early public concept held as a future project direction.",
-    detail:
-      "Included honestly as an early-stage repository with no implementation details claimed yet.",
-    technologies: ["AI", "Planning", "In discovery"],
-    visibility: "public",
-    repository: "https://github.com/akabirabbasnaqvi/Project-Pilot-AI",
-    tone: "#8b6d42",
-  },
 ];
 
 export const featuredProjects = projects.filter((project) => project.featured);
