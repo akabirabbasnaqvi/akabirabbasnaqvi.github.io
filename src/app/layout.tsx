@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   icons: {
     icon: [
+      { url: "/favicon.ico", sizes: "any" },
       { url: "/favicon-a.svg", type: "image/svg+xml" },
       { url: "/favicon-a.png", sizes: "192x192", type: "image/png" },
     ],
