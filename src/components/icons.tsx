@@ -14,13 +14,3 @@ export function ArrowUpRight({ className, title }: IconProps) {
     </svg>
   );
 }
-
-export function Mark({ className }: Readonly<{ className?: string }>) {
-  return (
-    <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
-      <path d="M21 3v36M3 21h36" stroke="currentColor" strokeWidth="1" />
-      <circle cx="21" cy="21" fill="currentColor" r="5" />
-      <circle cx="21" cy="21" r="11" stroke="currentColor" strokeWidth="1" />
-    </svg>
-  );
-}

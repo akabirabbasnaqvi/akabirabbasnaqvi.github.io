@@ -4,6 +4,7 @@ test("portfolio has eleven implemented projects and complete profile actions", a
   await page.goto("/");
 
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Akabir Abbas");
+  await expect(page).toHaveTitle("Akabir Abbas | AI/ML and Software Engineer");
   await expect(page.locator(".wordmark__text")).toHaveText("AAs");
   await expect(page.locator(".project-row")).toHaveCount(11);
   await expect(page.getByText("Project Pilot AI")).toHaveCount(0);
@@ -16,6 +17,7 @@ test("portfolio has eleven implemented projects and complete profile actions", a
   await expect(page.getByRole("link", { name: "Hire me on Fiverr" })).toHaveAttribute("href", "https://www.fiverr.com/users/akabir_abbas");
   await expect(page.getByRole("link", { name: "WhatsApp +92 303 3224737" })).toHaveAttribute("href", "https://wa.me/923033224737");
   await expect(page.getByRole("link", { name: "abbasakabir@gmail.com" })).toHaveAttribute("href", "mailto:abbasakabir@gmail.com");
+  await expect(page.getByRole("link", { name: "Read AutoTube case study" })).toHaveAttribute("href", "/case-studies/autotube/");
 
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
   expect(overflow).toBe(false);
@@ -104,7 +106,7 @@ test("typewriter and skill reveals complete without external libraries", async (
   await page.goto("/");
   await page.waitForTimeout(2_700);
 
-  await expect(page.locator("[data-typewriter]")).toHaveText("AI & Software Engineer");
+  await expect(page.locator("[data-typewriter]")).toHaveText("AI/ML and Software Engineer");
   await expect(page.locator("[data-typewriter]")).toHaveClass(/typewriter-complete/);
   await expect(page.locator(".skill-pill")).toHaveCount(34);
   await page.locator("#skills").scrollIntoViewIfNeeded();
@@ -115,7 +117,7 @@ test("reduced motion keeps all content visible and freezes motion enhancements",
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
 
-  await expect(page.locator("[data-typewriter]")).toHaveText("AI & Software Engineer");
+  await expect(page.locator("[data-typewriter]")).toHaveText("AI/ML and Software Engineer");
   await expect(page.locator("html")).not.toHaveClass(/motion-enhanced/);
   await expect(page.getByText("11 verified projects")).toBeVisible();
   await expect(page.locator(".cursor-orb")).toBeHidden();
@@ -125,6 +127,33 @@ test("reduced motion keeps all content visible and freezes motion enhancements",
     const laterFrame = await page.locator("#hero-canvas").screenshot();
     expect(laterFrame.equals(firstFrame)).toBe(true);
   }
+});
+
+test("AutoTube case study presents measured evidence and accessible navigation", async ({ page }, testInfo) => {
+  const failedResources: string[] = [];
+  page.on("response", (response) => {
+    if (response.status() >= 400) failedResources.push(`${response.status()} ${response.url()}`);
+  });
+  await page.goto("/case-studies/autotube/");
+
+  await expect(page).toHaveTitle("AutoTube Case Study | Akabir Abbas");
+  await expect(page.getByRole("heading", { level: 1, name: "AutoTube" })).toBeVisible();
+  await expect(page.getByText("16,114", { exact: true })).toBeVisible();
+  await expect(page.getByText("42.97 h", { exact: true })).toBeVisible();
+  await expect(page.locator(".brief-examples a")).toHaveCount(3);
+  await expect(page.getByRole("link", { name: /Apple's New Siri AI/ })).toHaveAttribute("href", "https://www.youtube.com/watch?v=h9ysOjB7v64");
+  await expect(page.getByText(/not a performance guarantee/i)).toBeVisible();
+
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
+  expect(overflow).toBe(false);
+  expect(failedResources).toEqual([]);
+
+  const screenshot = testInfo.outputPath("autotube-case-study.png");
+  const viewportScreenshot = testInfo.outputPath("autotube-case-study-viewport.png");
+  await page.screenshot({ path: screenshot, fullPage: true });
+  await page.screenshot({ path: viewportScreenshot });
+  await testInfo.attach("AutoTube case study", { path: screenshot, contentType: "image/png" });
+  await testInfo.attach("AutoTube case study viewport", { path: viewportScreenshot, contentType: "image/png" });
 });
 
 test("dark mode, sticky navigation, and scroll progress remain polished", async ({ page }, testInfo) => {

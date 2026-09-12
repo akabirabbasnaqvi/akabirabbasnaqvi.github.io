@@ -7,6 +7,7 @@ export type Project = {
   technologies: string[];
   visibility: "public" | "private";
   repository?: string;
+  caseStudy?: string;
   tone: string;
   featured?: boolean;
 };
@@ -123,13 +124,14 @@ export const projects: Project[] = [
   },
   {
     id: "10",
-    title: "YouTube Shorts Automation",
-    category: "Content pipeline",
-    summary: "A zero-paid-API workflow for producing and scheduling vertical video.",
+    title: "AutoTube",
+    category: "AI automation desktop app",
+    summary: "A local-first workflow for creating, reviewing, publishing, and improving YouTube Shorts.",
     detail:
-      "Finds trend signals, assembles scripts and media, creates voiceover and captions, renders with FFmpeg, and handles uploads through OAuth.",
-    technologies: ["Python", "FFmpeg", "OAuth", "Automation"],
+      "Turns a topic into a complete vertical video with AI-assisted scripting, media sourcing, narration, subtitles, FFmpeg rendering, YouTube upload, retries, and channel reporting.",
+    technologies: ["Python", "FFmpeg", "YouTube API", "AI automation"],
     visibility: "private",
+    caseStudy: "/case-studies/autotube/",
     tone: "#bc4d4d",
   },
   {

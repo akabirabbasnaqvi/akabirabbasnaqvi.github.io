@@ -21,7 +21,7 @@ type ProjectedParticle = Particle & {
   source: Particle;
 };
 
-const TYPEWRITER_TEXT = "AI & Software Engineer";
+const TYPEWRITER_TEXT = "AI/ML and Software Engineer";
 
 function initializeTypewriter(reducedMotion: boolean) {
   const target = document.querySelector<HTMLElement>("[data-typewriter]");

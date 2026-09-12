@@ -1,6 +1,6 @@
 # Akabir Abbas — Portfolio
 
-A Next.js 16, TypeScript, and Tailwind CSS portfolio built as a public working index of verified projects.
+A Next.js 16, TypeScript, and Tailwind CSS portfolio built as a public working index of verified projects. It includes a concise AutoTube case study at `/case-studies/autotube/`, plain AAs text branding, canonical metadata, text social-sharing metadata, a sitemap, and robots directives.
 
 ## Run locally
 
@@ -20,7 +20,7 @@ pnpm build
 pnpm test:visual
 ```
 
-Private projects intentionally have no public repository links. Update `src/content/projects.ts` only if you want to disclose more detail or add a private case-study destination.
+Private projects intentionally have no public repository links. A private repository can still link to an approved public case study through the `caseStudy` field in `src/content/projects.ts`.
 
 ## Preview the production export
 

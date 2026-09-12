@@ -1,6 +1,7 @@
-import { ArrowUpRight, Mark } from "@/components/icons";
+import { ArrowUpRight } from "@/components/icons";
 import { PortfolioEffects } from "@/components/portfolio-effects";
 import { featuredProjects, projects, type Project } from "@/content/projects";
+import Link from "next/link";
 
 const githubProfile = "https://github.com/akabirabbasnaqvi";
 const linkedInProfile = "https://www.linkedin.com/in/akabir-abbas/";
@@ -17,6 +18,14 @@ const skillGroups = [
 ] as const;
 
 function ProjectLink({ project }: Readonly<{ project: Project }>) {
+  if (project.caseStudy) {
+    return (
+      <Link aria-label={`Read ${project.title} case study`} className="project-access project-access--link" href={project.caseStudy} prefetch={false}>
+        Case study <ArrowUpRight className="icon" />
+      </Link>
+    );
+  }
+
   if (project.visibility === "private") {
     return <span className="project-access">Private case study</span>;
   }
@@ -50,13 +59,13 @@ function Header() {
   return (
     <header className="site-header">
       <a aria-label="Akabir Abbas - back to top" className="wordmark" href="#top">
-        <Mark className="wordmark__mark" />
         <span className="wordmark__text">AAs</span>
       </a>
       <nav aria-label="Primary navigation" className="site-nav">
         <a href="#work">Work</a>
         <a href="#approach">Approach</a>
         <a href="#contact">Contact</a>
+        <Link href="/case-studies/autotube/" prefetch={false}>Case study</Link>
       </nav>
       <details className="mobile-nav">
         <summary>Menu</summary>
@@ -64,6 +73,7 @@ function Header() {
           <a href="#work">Work</a>
           <a href="#approach">Approach</a>
           <a href="#contact">Contact</a>
+          <Link href="/case-studies/autotube/" prefetch={false}>Case study</Link>
         </nav>
       </details>
       <a className="header-link" href={githubProfile} rel="noreferrer" target="_blank">
@@ -80,12 +90,12 @@ function Hero() {
         <div className="hero__identity">
           <h1>
             <span className="hero__name">Akabir Abbas</span>
-            <span aria-label="AI and Software Engineer" className="hero__role">
-              <span aria-hidden="true" data-typewriter>AI &amp; Software Engineer</span>
+            <span aria-label="AI/ML and Software Engineer" className="hero__role">
+              <span aria-hidden="true" data-typewriter>AI/ML and Software Engineer</span>
             </span>
           </h1>
         </div>
-        <p className="hero__lede">I build pragmatic AI, data, and web systems for complex operational work.</p>
+        <p className="hero__lede">I build applied AI, machine learning, automation, and software systems for complex operational work.</p>
         <div className="hero__actions">
           <a className="button button--primary" href="#work">
             View work <ArrowUpRight className="icon" />
@@ -296,7 +306,7 @@ export function Portfolio() {
         </main>
         <footer className="site-footer">
           <span>© {new Date().getFullYear()} Akabir Abbas</span>
-          <span>AI and software engineering</span>
+          <span>AI/ML and Software Engineer</span>
         </footer>
       </div>
     </>
